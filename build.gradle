@@ -5,18 +5,19 @@ plugins {
 	id 'com.palantir.docker' version '0.34.0'
 }
 
-group = 'guru.qa'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
+group = 'org.rangiffler'
+version = '0.0.3-SNAPSHOT'
 
 repositories {
 	mavenCentral()
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src/main/java'
+		}
+	}
 }
 
 dependencies {
@@ -27,6 +28,24 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+docker {
+	dependsOn build
+	name "fireoldbeard/rangiffler-geo:${project.version}"
+	tag 'latest', 'fireoldbeard/rangiffler-geo:latest'
+	files bootJar.archiveFile
+	buildArgs([APP_VER: project.version, DOCKER: project.ext.dockerImage])
+	noCache true
+}
+
+task dockerRmi(type: Exec) {
+	workingDir "${buildDir}"
+	commandLine 'bash', '-c', "docker rmi -f \$(docker images | grep 'rangiffler')\n"
+}
+
+tasks.named('bootJar') {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 tasks.named('test') {

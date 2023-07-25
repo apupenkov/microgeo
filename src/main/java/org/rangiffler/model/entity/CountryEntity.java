@@ -1,4 +1,4 @@
-package ru.spb.microgeo.model.entity;
+package org.rangiffler.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

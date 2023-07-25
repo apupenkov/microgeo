@@ -71,7 +71,7 @@ insert into countries(code, name) values ('NG', 'Nigeria');
 insert into countries(code, name) values ('CM', 'Cameroon');
 insert into countries(code, name) values ('TG', 'Togo');
 insert into countries(code, name) values ('GH', 'Ghana');
-insert into countries(code, name) values ('CI', 'C?ted'Ivoire');
+insert into countries(code, name) values ('CI', 'C?ted`Ivoire');
 insert into countries(code, name) values ('GN', 'Guinea');
 insert into countries(code, name) values ('GW', 'Guinea-Bissau');
 insert into countries(code, name) values ('LR', 'Liberia');

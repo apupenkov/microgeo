@@ -9,7 +9,7 @@ server:
 
 spring:
   application:
-    name: microgeo
+    name: rangiffler-geo
   mvc:
     log-request-details: true
   datasource:
@@ -21,7 +21,7 @@ spring:
       max-lifetime: 1000
       auto-commit: true
     username: postgres
-    password: secret
+    password: 12345Kapitan_Farsh
   jpa:
     properties:
       hibernate:
@@ -48,7 +48,7 @@ spring:
     activate:
       on-profile: 'local'
   datasource:
-    url: 'jdbc:postgresql://localhost:5432/geo'
+    url: 'jdbc:postgresql://localhost:5432/rangiffler-country'
   jpa:
     hibernate:
       ddl-auto: validate
